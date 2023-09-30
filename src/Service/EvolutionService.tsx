@@ -19,9 +19,18 @@ export async function getAllEvolutionDetails(payload: GetEvolutionList) {
     }
   }
 
-  export async function getEvolutionDetails(payload: GetImageList) {
+  export async function getEvolutionChain(payload: GetImageList) {
     try {
       const response = await appClient.get(api.endPoint.evolutionChain + payload.id);
+      return hasSuccess(response?.data);
+    } catch (error) {
+      return hasError(error);
+    }
+  }
+
+  export async function getEvolutionTriggers(payload: GetImageList) {
+    try {
+      const response = await appClient.get(api.endPoint.evolutiontriggers + payload.id);
       return hasSuccess(response?.data);
     } catch (error) {
       return hasError(error);

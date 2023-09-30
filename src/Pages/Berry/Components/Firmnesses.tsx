@@ -11,7 +11,7 @@ const Firmnesses:React.FC<Props>= (
 }
 ) => {
     const dispatch = useAppDispatch()
-    const { isLoading, firmness} = useSelector((state: IRootState) => {
+    const { isFirmnessesLoading, firmness} = useSelector((state: IRootState) => {
         return state.berryStateData
     })
 
@@ -24,7 +24,7 @@ if(id) {
 }
     },[id])
 
-if(isLoading) {
+if(isFirmnessesLoading) {
     return <div>Loadig...</div>
 }
 const data = [

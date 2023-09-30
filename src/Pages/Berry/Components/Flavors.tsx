@@ -9,7 +9,7 @@ const Flavors:React.FC<Props> = ({
     id
 }) => {
     const dispatch = useAppDispatch()
-    const { isLoading, flavors} = useSelector((state: IRootState) => {
+    const { isFlalvorLoading, flavors} = useSelector((state: IRootState) => {
         return state.berryStateData
     })
 
@@ -22,7 +22,7 @@ if(id) {
 }
     },[id])
 
-if(isLoading) {
+if(isFlalvorLoading) {
     return <div>Loadig...</div>
 }
 console.log(flavors)

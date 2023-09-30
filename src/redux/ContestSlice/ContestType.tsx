@@ -18,6 +18,61 @@ export interface ImagePokemon {
     id: number;
   }
 
+  interface ContestTypes {
+    id: number;
+    name: string;
+    berry_flavor: {
+      name: string;
+      url: string;
+    };
+    names: {
+      name: string;
+      color: string;
+      language: {
+        name: string;
+        url: string;
+      };
+    }[];
+  }
+  
+  interface contestEffect {
+    id: number;
+    appeal: number;
+    jam: number;
+    effect_entries: {
+      effect: string;
+      language: {
+        name: string;
+        url: string;
+      };
+    }[];
+    flavor_text_entries: {
+      flavor_text: string;
+      language: {
+        name: string;
+        url: string;
+      };
+    }[];
+  }
+
+  interface SuperContestEffects {
+    id: number;
+    appeal: number;
+    flavor_text_entries: {
+      flavor_text: string;
+      language: {
+        name: string;
+        url: string;
+      };
+    }[];
+    moves: {
+      name: string;
+      url: string;
+    }[];
+  }
+  
+  
+
 export interface ContestList {
     list:Contest[]
     id: number
@@ -28,6 +83,8 @@ export interface ContestList {
     flavor_text_entries:FlavorText[]
     effect_entries: Effect[]
     isLoading: boolean;
+    isContestEffectsLoading:boolean;
+    isSuperContestEffectsLoading:boolean;
     imagePokemonList: ImagePokemon;
   }
 

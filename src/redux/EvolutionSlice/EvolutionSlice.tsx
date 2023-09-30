@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import constant from "config/constant/constant";
-import { getAllEvolutionDetailsAction, getEvolutionDetailsAction } from "./EvolutionAsyncThunk";
+import { getAllEvolutionDetailsAction, getEvolutionChainAction, getEvolutionTriggersAction } from "./EvolutionAsyncThunk";
 import { getAllBerryDetailsAction } from "redux/BerrySlice/BerryAsyncThunk";
 import { EvolutionList } from "./EvolutionType";
 
@@ -28,7 +28,10 @@ const initialState: EvolutionList = {
   limit: constant.offset.size,
   total: constant.offset.defaultTotal,
   name: "",
-  background: 0
+  background: 0,
+  EvolutionDetailsList: [],
+  EvolutionChainList: [],
+  EvolutionTriggerlist: []
 };
 
 const EvolutionSlice = createSlice({
@@ -62,11 +65,11 @@ const EvolutionSlice = createSlice({
           state.isLoading = false;
         }
       )
-      .addCase(getEvolutionDetailsAction.pending, (state: EvolutionList) => {
+      .addCase(getEvolutionChainAction.pending, (state: EvolutionList) => {
         state.isLoading = true;
       })
       .addCase(
-        getEvolutionDetailsAction.fulfilled,
+        getEvolutionChainAction.fulfilled,
         (state: EvolutionList, { payload }) => {
           if (payload) {
             const { data, spec, name, weight, height, order } = payload;
@@ -84,7 +87,33 @@ const EvolutionSlice = createSlice({
           state.isLoading = false;
         }
       )
-      .addCase(getEvolutionDetailsAction.rejected, (state: EvolutionList) => {
+      .addCase(getEvolutionChainAction.rejected, (state: EvolutionList) => {
+        state.isLoading = false;
+      })
+
+      .addCase(getEvolutionTriggersAction.pending, (state: EvolutionList) => {
+        state.isLoading = true;
+      })
+      .addCase(
+        getEvolutionTriggersAction.fulfilled,
+        (state: EvolutionList, { payload }) => {
+          if (payload) {
+            const { data, spec, name, weight, height, order } = payload;
+            state.imagePokemonList = {
+              ...data,
+              ...spec,
+              weight,
+              height,
+              name,
+              order,
+            };
+          } else {
+            state.imagePokemonList = initialImage;
+          }
+          state.isLoading = false;
+        }
+      )
+      .addCase(getEvolutionTriggersAction.rejected, (state: EvolutionList) => {
         state.isLoading = false;
       });
   },

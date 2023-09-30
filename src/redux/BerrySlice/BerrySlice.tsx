@@ -51,6 +51,8 @@ const initialImage = {
 const initialState: BerryList = {
   list: [],
   isLoading: false,
+  isFlalvorLoading:false,
+  isFirmnessesLoading:false,
   id: 1,
   berryList: cheriBerry,
   growth_time: 1,
@@ -69,6 +71,7 @@ const initialState: BerryList = {
   name: "",
   size: 0,
   flavors: {
+    
     id: 0,
     name: "",
     berries: [
@@ -154,9 +157,9 @@ const BerrySlice = createSlice({
         }
       )
       .addCase(getBerryFirmnessesAction.rejected, (state: BerryList) => {
-        state.isLoading = false;
+        state.isFirmnessesLoading = false;
       }).addCase(getBerryFirmnessesAction.pending, (state: BerryList) => {
-        state.isLoading = true;
+        state.isFirmnessesLoading = true;
       })
       .addCase(
         getBerryFirmnessesAction.fulfilled,
@@ -167,15 +170,15 @@ const BerrySlice = createSlice({
           } else {
               state.list = [];
           }
-          state.isLoading = false;
+          state.isFirmnessesLoading = false;
         }
       )
 
       
       .addCase(getBerryFlavorsAction.rejected, (state: BerryList) => {
-        state.isLoading = false;
+        state.isFlalvorLoading = false;
       }).addCase(getBerryFlavorsAction.pending, (state: BerryList) => {
-        state.isLoading = true;
+        state.isFlalvorLoading = true;
       })
       .addCase(
         getBerryFlavorsAction.fulfilled,
@@ -186,7 +189,7 @@ const BerrySlice = createSlice({
           } else {
               state.list = [];
           }
-          state.isLoading = false;
+          state.isFlalvorLoading = false;
         }
       )
   },

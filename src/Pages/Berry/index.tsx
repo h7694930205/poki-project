@@ -12,7 +12,6 @@ import { Strings } from "Resource/Strings";
 
 const BerriesList = () => {
   const dispatch = useAppDispatch();
-  // const { listId } = useParams()
   const { isLoading } = useSelector(
     (state: IRootState) => state.berryStateData
   );

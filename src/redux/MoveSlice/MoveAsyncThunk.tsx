@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getAllMoveDetails, getMoveDetails } from "Service/MoveService";
+import { getAllMoveDetails, getMove, getMoveAilments, getMoveBattleStyle, getMoveCategory, getMoveDamageClass, getMoveLearnMethod, getMoveTarget } from "Service/MoveService";
 import constant from "config/constant/constant";
 
 export interface GetMoveList {
@@ -31,16 +31,132 @@ export const getAllMoveDetailsAction = createAsyncThunk(
     }
 );
 
-export const getMoveDetailsAction = createAsyncThunk(
-    "moveDetails/getContestDetailsAction",
+export const getMoveAction = createAsyncThunk(
+    "Move/getMoveAction",
     async (payload: GetImageList, { dispatch, getState }) => {
       try {
-        const response = await getMoveDetails(payload);
+        const response = await getMove(payload);
         if (response.status === constant.APIResponse.defaultStatusCode) {
           return {
             data: response?.data,
-            spec: response?.data?.species,
-            name: response?.data?.name,
+
+          };
+        } else if (response.status === constant.APIResponse.errorStatusCode) {
+          return response?.data?.message;
+        }
+      } catch (error) {
+        return error;
+      }
+    }
+  );
+
+
+  export const getMoveAilmentsAction = createAsyncThunk(
+    "Move/getMoveAilmentsAction",
+    async (payload: GetImageList, { dispatch, getState }) => {
+      try {
+        const response = await getMoveAilments(payload);
+        if (response.status === constant.APIResponse.defaultStatusCode) {
+          return {
+            data: response?.data,
+
+          };
+        } else if (response.status === constant.APIResponse.errorStatusCode) {
+          return response?.data?.message;
+        }
+      } catch (error) {
+        return error;
+      }
+    }
+  );
+
+
+
+  export const getMoveBattleStyleAction = createAsyncThunk(
+    "Move/getMoveBattleStyleAction",
+    async (payload: GetImageList, { dispatch, getState }) => {
+      try {
+        const response = await getMoveBattleStyle(payload);
+        if (response.status === constant.APIResponse.defaultStatusCode) {
+          return {
+            data: response?.data,
+
+          };
+        } else if (response.status === constant.APIResponse.errorStatusCode) {
+          return response?.data?.message;
+        }
+      } catch (error) {
+        return error;
+      }
+    }
+  );
+
+  export const getMoveCategoryAction = createAsyncThunk(
+    "Move/getMoveCategoryAction",
+    async (payload: GetImageList, { dispatch, getState }) => {
+      try {
+        const response = await getMoveCategory(payload);
+        if (response.status === constant.APIResponse.defaultStatusCode) {
+          return {
+            data: response?.data,
+
+          };
+        } else if (response.status === constant.APIResponse.errorStatusCode) {
+          return response?.data?.message;
+        }
+      } catch (error) {
+        return error;
+      }
+    }
+  );
+
+  export const getMoveDamageClassAction = createAsyncThunk(
+    "Move/getMoveDamageClassAction",
+    async (payload: GetImageList, { dispatch, getState }) => {
+      try {
+        const response = await getMoveDamageClass(payload);
+        if (response.status === constant.APIResponse.defaultStatusCode) {
+          return {
+            data: response?.data,
+
+          };
+        } else if (response.status === constant.APIResponse.errorStatusCode) {
+          return response?.data?.message;
+        }
+      } catch (error) {
+        return error;
+      }
+    }
+  );
+
+  export const getMoveLearnMethodAction = createAsyncThunk(
+    "Move/getMoveLearnMethodAction",
+    async (payload: GetImageList, { dispatch, getState }) => {
+      try {
+        const response = await getMoveLearnMethod(payload);
+        if (response.status === constant.APIResponse.defaultStatusCode) {
+          return {
+            data: response?.data,
+
+          };
+        } else if (response.status === constant.APIResponse.errorStatusCode) {
+          return response?.data?.message;
+        }
+      } catch (error) {
+        return error;
+      }
+    }
+  );
+
+  export const getMoveTargetAction = createAsyncThunk(
+    "Move/getMoveTargetAction",
+    async (payload: GetImageList, { dispatch, getState }) => {
+      try {
+        const response = await getMoveTarget(payload);
+        if (response.status === constant.APIResponse.defaultStatusCode) {
+          return {
+            data: response?.data,
+
           };
         } else if (response.status === constant.APIResponse.errorStatusCode) {
           return response?.data?.message;

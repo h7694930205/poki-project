@@ -90,6 +90,8 @@ export interface ImagePokemon {
     list: BerrysList[];
     berryList: Berry;
     isLoading: boolean;
+    isFlalvorLoading:boolean;
+    isFirmnessesLoading:boolean;
     id: number;
     limit: number
     name: string;
@@ -154,6 +156,7 @@ export interface ImagePokemon {
   }
   
   interface BerryFlavor {
+    isFlalvorLoading:false
     id: number;
     name: string;
     berries: {

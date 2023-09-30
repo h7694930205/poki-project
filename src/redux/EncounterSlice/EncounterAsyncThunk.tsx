@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getAllEncounterDetails, getEncounterDetails } from "Service/EncounterService";
+import { getAllEncounterDetails, getEncounterConditionValues, getEncounterConditions, getEncounterMethod } from "Service/EncounterService";
 import constant from "config/constant/constant";
 
 export interface GetEncounterList {
@@ -8,8 +8,17 @@ export interface GetEncounterList {
     limit: number;
 }
 
-export interface GetImageList {
-    id: number;
+
+export interface GetEncounterMethods {
+  id: number;
+}
+
+export interface GetEncounterConditions {
+  id: number;
+}
+
+export interface GetEncounterConditionValues {
+  id: number;
 }
 
 export const getAllEncounterDetailsAction = createAsyncThunk(
@@ -31,16 +40,14 @@ export const getAllEncounterDetailsAction = createAsyncThunk(
     }
 );
 
-export const getEncounterDetailsAction = createAsyncThunk(
-    "encounterDetails/getEncounterDetailsAction",
-    async (payload: GetImageList, { dispatch, getState }) => {
+export const getEncounterMethodsAction = createAsyncThunk(
+    "Encounter/getEncounterMethodsAction",
+    async (payload: GetEncounterMethods, { dispatch, getState }) => {
       try {
-        const response = await getEncounterDetails(payload);
+        const response = await getEncounterMethod(payload);
         if (response.status === constant.APIResponse.defaultStatusCode) {
           return {
             data: response?.data,
-            spec: response?.data?.species,
-            name: response?.data?.name,
           };
         } else if (response.status === constant.APIResponse.errorStatusCode) {
           return response?.data?.message;
@@ -51,3 +58,38 @@ export const getEncounterDetailsAction = createAsyncThunk(
     }
   );
   
+  export const getEncounterConditionsAction = createAsyncThunk(
+    "Encounter/getEncounterConditionsAction",
+    async (payload: GetEncounterConditions, { dispatch, getState }) => {
+      try {
+        const response = await getEncounterConditions(payload);
+        if (response.status === constant.APIResponse.defaultStatusCode) {
+          return {
+            data: response?.data,
+          };
+        } else if (response.status === constant.APIResponse.errorStatusCode) {
+          return response?.data?.message;
+        }
+      } catch (error) {
+        return error;
+      }
+    }
+  );
+
+  export const getEncounterConditionValuesAction = createAsyncThunk(
+    "Encounter/getEncounterConditionValuesAction",
+    async (payload: GetEncounterConditionValues, { dispatch, getState }) => {
+      try {
+        const response = await getEncounterConditionValues(payload);
+        if (response.status === constant.APIResponse.defaultStatusCode) {
+          return {
+            data: response?.data,
+          };
+        } else if (response.status === constant.APIResponse.errorStatusCode) {
+          return response?.data?.message;
+        }
+      } catch (error) {
+        return error;
+      }
+    }
+  );
