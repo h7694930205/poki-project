@@ -8,7 +8,7 @@ import { idText } from 'typescript'
 export interface Props {
     id: number
 }
-const Berries:React.FC<Props> = ({
+const ContestTypes:React.FC<Props> = ({
     id
 }) => {
    
@@ -33,43 +33,20 @@ return () => {
 if(isLoading) {
     return <div>Loadig...</div>
 }
-// max_harvest:5
-// natural_gift_power:60
-// size:20
-// smoothness:25
-// soil_dryness:15"
+
+
+
 const data = [
     {
         label: Strings.name,
-        value: berryList.name
+        value: ""
     },
-    {
-        label: "Growth",
-        value: berryList.growth_time
-    },
-    {
-        label:  "Max harvest",
-        value: berryList.max_harvest
-    },
-    {
-        label: "Natural gift power",
-        value: berryList.natural_gift_power
-    },
-    {
-        label: "Natural gift power type",
-        value: berryList.natural_gift_type.name
-    },
-    {
-        label: "Smoothy",
-        value: berryList.smoothness
-    },
-    {
-        label: "Soil dryness",
-        value: berryList.soil_dryness    }
+    
 ]
+
   return (
     <div className='section'>
-        <h2>{Strings.generalDetails}</h2>
+        <h2>Contest Types</h2>
       {data.map((item) => <DataContent value = {item.value} label = {item.label}/>)}
     </div>
   )
@@ -84,4 +61,4 @@ const DataContent:FC<any> = ({
         <span>: {value}</span>
     </div>
 }
-export default Berries
+export default ContestTypes

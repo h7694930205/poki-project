@@ -77,7 +77,6 @@ export interface MoveList {
     limit: number;
     offset: number;
     total: number;
-
     isLoading: boolean;
     imagePokemonList: ImagePokemon;
   }
@@ -94,7 +93,7 @@ export interface MoveList {
 
 
 
-  interface Move {
+export  interface MoveDeailts {
     id: number;
     name: string;
     accuracy: number;

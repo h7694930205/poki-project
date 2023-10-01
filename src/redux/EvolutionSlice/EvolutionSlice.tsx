@@ -53,18 +53,7 @@ const EvolutionSlice = createSlice({
       .addCase(getAllEvolutionDetailsAction.pending, (state: EvolutionList) => {
         state.isLoading = true;
       })
-      .addCase(
-        getAllBerryDetailsAction.fulfilled,
-        (state: EvolutionList, { payload }) => {
-          if (payload) {
-            state.list = payload?.data;
-            state.total = payload?.count;
-          } else {
-              state.list = [];
-          }
-          state.isLoading = false;
-        }
-      )
+    
       .addCase(getEvolutionChainAction.pending, (state: EvolutionList) => {
         state.isLoading = true;
       })

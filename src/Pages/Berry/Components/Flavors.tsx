@@ -1,9 +1,11 @@
 import { Strings } from 'Resource/Strings'
 import React, { FC, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getBerryDetailsAction, getBerryFirmnessesAction, getBerryFlavorsAction } from 'redux/BerrySlice/BerryAsyncThunk'
+import { useSelector } from 'react-redux'
+import { getBerryFlavorsAction } from 'redux/BerrySlice/BerryAsyncThunk'
 import { IRootState, useAppDispatch } from 'redux/store'
 import { Props } from './Berries'
+import Details from 'Components/Details/Details'
+import { FlavorList } from 'redux/BerrySlice/BerryType'
 
 const Flavors:React.FC<Props> = ({
     id
@@ -25,29 +27,29 @@ if(id) {
 if(isFlalvorLoading) {
     return <div>Loadig...</div>
 }
-console.log(flavors)
 
+
+
+
+  
 const data = [
     {
         label: Strings.name,
         value: flavors.name
+    },
+    {
+      label: "Berries",
+      value: flavors.berries.map((item) => item.berry.name)?.join(" ,")
     }
 ]
   return (
-    <div>
+    <div className='section'>
         <h2>Flavors details</h2>
-      {data.map((item) => <DataContent value = {item.value} label = {item.label}/>)}
+      {data.map((item) => <Details value = {item.value} label = {item.label}/>)}
     </div>
   )
 }
 
-const DataContent:FC<any> = ({
- label,
- value   
-}) => {
-    return <div>
-        <label>{label}</label>
-        <span>: {value}</span>
-    </div>
-}
+
+
 export default Flavors

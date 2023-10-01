@@ -93,6 +93,18 @@ export interface ContestList {
     flavor_text: string;
     language:Language[]
   }
+  [
+    {
+      flavor_text: "3434",
+      language: [
+        {
+          name: "df",
+          url: "dfdf df"
+        }
+      ]
+
+    }
+  ]
   export interface Effect{
     effet: string;
   }

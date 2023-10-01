@@ -14,18 +14,15 @@ export interface GetImageList {
 }
 
 export interface GetContestTypes {
-  // url:number;
   id: number;
 }
 
 
 export interface GetContestEffects {
-  // url:number;
   id: number;
 }
 
 export interface GetSuperContestEffects {
-  // url:number;
   id: number;
 }
 
@@ -87,7 +84,7 @@ export const getContestEffectsAction = createAsyncThunk(
 
 
 export const getSuperContestEffectsAction = createAsyncThunk(
-  "Contest/getContestEffectsAction",
+  "Contest/getSuperContestEffectsAction",
   async (payload: GetSuperContestEffects, { dispatch, getState }) => {
     try {
       const response = await getSuperContestEffects(payload);

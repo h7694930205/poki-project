@@ -80,8 +80,36 @@ export interface ImagePokemon {
       url: string;
     };
   }
-  
- 
+export interface BerriesProps {
+    potency: number;
+    berry: {
+      name: string;
+      url: string;
+    }
+}
+export interface FlavorList {
+  id: number;
+  name: string;
+  berries: {
+    potency: number;
+    berry: {
+      name: string;
+      url: string;
+    };
+  }[];
+  contest_type: {
+    name: string;
+    url: string;
+  };
+  names: {
+    name: string;
+    language: {
+      name: string;
+      url: string;
+    };
+  }
+}
+
   
   
   export interface BerryList {
@@ -128,7 +156,6 @@ export interface ImagePokemon {
         };
       }[];
     }
-    ;
     item: {
       name: string;
       url: string;
